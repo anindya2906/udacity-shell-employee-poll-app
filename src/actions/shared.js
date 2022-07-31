@@ -1,7 +1,7 @@
 import { getInitialData } from '../utils/helpers';
 import { receiveUsers } from './users';
 import { receiveQuestions } from './questions';
-import { setAuthedUser } from './authedUser';
+import { authedUser } from './authedUser';
 
 const temp_user = 'sarahedo';
 
@@ -10,6 +10,6 @@ export const receiveInitialData = () => {
     const { users, questions } = await getInitialData();
     dispatch(receiveUsers(users));
     dispatch(receiveQuestions(questions));
-    dispatch(setAuthedUser(temp_user));
+    dispatch(authedUser(temp_user));
   };
 };
