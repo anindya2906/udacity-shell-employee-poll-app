@@ -1,17 +1,21 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { useParams } from 'react-router-dom';
 
 const Poll = (props) => {
+  const params = useParams();
+  const question = props.questions[params.id];
+
   return (
     <div>
-      <div>Poll By {props.question.author}</div>
-      <h3>Would you rather</h3>
+      <h3>Poll By {question.author}</h3>
+      <h2>Would you rather</h2>
       <div>
-        <h4>{props.question.optionOne.text}</h4>
+        <h4>{question.optionOne.text}</h4>
         <button>Click</button>
       </div>
       <div>
-        <h4>{props.question.optionTwo.text}</h4>
+        <h4>{question.optionTwo.text}</h4>
         <button>Click</button>
       </div>
     </div>
@@ -20,7 +24,7 @@ const Poll = (props) => {
 
 const mapStateToProps = (state, props) => {
   return {
-    question: state.questions[props.id],
+    questions: state.questions,
   };
 };
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 const Question = (props) => {
   return (
@@ -7,7 +8,7 @@ const Question = (props) => {
       <div>{props.question.author}</div>
       {/* TODO: format the timestamp */}
       <div>{props.question.timestamp}</div>
-      <button>Show</button>
+      <Link to={'/poll/' + props.question.id}>Show</Link>
     </div>
   );
 };

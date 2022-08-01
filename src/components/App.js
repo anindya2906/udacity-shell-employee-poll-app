@@ -1,9 +1,12 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import { Route, Redirect } from 'react-router-dom';
 
 import { receiveInitialData } from '../actions/shared';
+import NavBar from './NavBar';
 import Dashboard from './Dashboard';
 import Poll from './Poll';
+import NewQuestion from './NewQuestion';
 
 const App = (props) => {
   useEffect(() => {
@@ -16,9 +19,22 @@ const App = (props) => {
 
   return (
     <div>
-      <Poll id={'8xf0y6ziyjabvozdd253nd'} />
-      <hr />
-      <Dashboard />
+      <NavBar />
+      <Route path="/" exact>
+        <Redirect to="/dashboard" />
+      </Route>
+      <Route path="/dashboard">
+        <Dashboard />
+      </Route>
+      <Route path="/poll" exact>
+        <Redirect to="/dashboard" />
+      </Route>
+      <Route path="/poll/:id">
+        <Poll />
+      </Route>
+      <Route path="/new">
+        <NewQuestion />
+      </Route>
     </div>
   );
 };
