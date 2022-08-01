@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import { receiveInitialData } from '../actions/shared';
 import Dashboard from './Dashboard';
+import Poll from './Poll';
 
 const App = (props) => {
   useEffect(() => {
@@ -15,6 +16,8 @@ const App = (props) => {
 
   return (
     <div>
+      <Poll id={'8xf0y6ziyjabvozdd253nd'} />
+      <hr />
       <Dashboard />
     </div>
   );
